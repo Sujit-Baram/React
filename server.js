@@ -15,7 +15,10 @@ server.listen(port, () => {
 
 var roomno = 1;   // initial socket.io room number
 
-
+// socket.io onConnect
+io.on('connection', (socket) => {
+  var currentRoomId = 'room-' + roomno;
+  socket.join(currentRoomId);
   
   console.log(`${socket.id} has connected to ${currentRoomId}`);
 
